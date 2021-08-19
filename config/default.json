@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb://aniket124:aniket123@cluster0-shard-00-00.6mc7k.mongodb.net:27017,cluster0-shard-00-01.6mc7k.mongodb.net:27017,cluster0-shard-00-02.6mc7k.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-lftdc6-shard-0&authSource=admin&retryWrites=true&w=majority"
+    "mongoURI": "mongodb://aniket124:aniket123@cluster0-shard-00-00.6mc7k.mongodb.net:27017,cluster0-shard-00-01.6mc7k.mongodb.net:27017,cluster0-shard-00-02.6mc7k.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-lftdc6-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "jwtSecret": "1356"
 }
