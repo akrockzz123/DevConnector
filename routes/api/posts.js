@@ -182,6 +182,44 @@ router.delete('/:id',auth, async (req,res) => {
     }
 })
 
+// @route POST api/posts/comment/:id
+// @desc comment on a post
+// @access Private
+router.post('/comment/:id', [auth,
+    check('text','text is required').not().isEmpty()], async (req,res) => {
+        const errors = validationResult(req)
+    
+        if(!errors.isEmpty()) {
+            return res.status(400).json({errrors: errors.array() })
+        }
+    
+        try{
+    
+            const user = await User.findById(req.user.id).select('-password')
+
+
+            const post = await Post.findById(req.params.id)
+
+            const newComment  = {
+                text: req.body.text,
+                name: user.name,
+                user:req.user.id,
+                avatar: user.avatar
+    
+            }
+
+            post.comments.unshift(newComment)
+    
+            const newpost = await post.save()
+    
+            res.json(newpost)
+    
+        }catch(err){
+            console.log(err.message)
+            res.status(500).send("Server Error")
+        }
+    });
+    
 
 module.exports = router
 
