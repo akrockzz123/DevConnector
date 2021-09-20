@@ -16,6 +16,8 @@ import { useDispatch } from 'react-redux'
 import {getPost} from '../../Actions/post'
 
 import PostItem from '../posts/PostItem'
+
+import CommentForm from './CommentForm'
  const Post = ({match}) => {
 
     const dispatch = useDispatch()
@@ -25,9 +27,11 @@ import PostItem from '../posts/PostItem'
         dispatch(getPost(match.params.id))
     },[getPost])
     return (
-        <div>
+        <div className="container">
             {post !== null && (
-                <PostItem post ={post} showActions='false'/>
+                
+                <PostItem post ={post} showActions='false'/>,
+                <CommentForm key ={match.params.id}/>
             )}
         </div>
     ); 
