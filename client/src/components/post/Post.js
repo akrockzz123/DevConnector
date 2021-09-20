@@ -17,12 +17,14 @@ import {getPost} from '../../Actions/post'
 
 import PostItem from '../posts/PostItem'
 
-import CommentForm from './CommentForm'
+import CommentItem from './CommentItem'
+
  const Post = ({match}) => {
 
     const dispatch = useDispatch()
 
     const {post} = useSelector(state => state.postReducer)
+
     useEffect(() => {
         dispatch(getPost(match.params.id))
     },[getPost])
@@ -30,7 +32,13 @@ import CommentForm from './CommentForm'
         <div className="container">
             {post !== null && (
                 
-                <PostItem post ={post} showActions='false'/>
+                <PostItem post ={post} showActions='false'/>,
+                <div className="comments">
+                     {post.comments.map(comment => (
+                    <CommentItem key ={comment._id} postId = {post._id} comment = {comment}/>
+                ))}
+                </div>
+               
             )}
         </div>
     ); 
