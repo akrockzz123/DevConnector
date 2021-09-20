@@ -30,8 +30,7 @@ import CommentForm from './CommentForm'
         <div className="container">
             {post !== null && (
                 
-                <PostItem post ={post} showActions='false'/>,
-                <CommentForm key ={match.params.id}/>
+                <PostItem post ={post} showActions='false'/>
             )}
         </div>
     ); 

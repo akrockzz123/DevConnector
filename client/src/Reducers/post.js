@@ -40,7 +40,7 @@ export const Posts = (state= initialState,action) => {
         case DELETE_POST:
             return {
                 ...state,
-                posts: initialState.posts.map(post => post._id !== payload),
+                posts: state.posts.map(post => post._id !== payload),
                 loading: false
             }
         break;

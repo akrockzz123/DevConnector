@@ -16,14 +16,10 @@ const auth = require('../../middleware/authMiddleware')
 // @route POST api/posts
 // @desc Tset route
 // @access Private
-router.post('/', [auth,
-check('text','text is required').not().isEmpty()], async (req,res) => {
+router.post('/',auth, async (req,res) => {
     const errors = validationResult(req)
 
-    if(!errors.isEmpty()) {
-        return res.status(400).json({errrors: errors.array() })
-    }
-
+   
     try{
 
         const user = await User.findById(req.user.id).select('-password')
@@ -185,8 +181,7 @@ router.delete('/:id',auth, async (req,res) => {
 // @route POST api/posts/comment/:id
 // @desc comment on a post
 // @access Private
-router.post('/comment/:id', [auth,
-    check('text','text is required').not().isEmpty()], async (req,res) => {
+router.post('/comment/:id', auth, async (req,res) => {
         const errors = validationResult(req)
     
         if(!errors.isEmpty()) {

@@ -11,7 +11,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { useState } from 'react'
-const CommentForm = () => {
+const CommentForm = ({postId}) => {
 
     const dispatch = useDispatch()
 
@@ -24,7 +24,7 @@ const CommentForm = () => {
             </div>
             <form className='form my-1' onSubmit={(e) => {
                 e.preventDefault();
-                dispatch(addComment(text))
+                dispatch(addComment(postId,{text}))
                 
             }}>
                 <textarea

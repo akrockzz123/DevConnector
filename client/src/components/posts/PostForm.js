@@ -28,7 +28,7 @@ const PostForm = () => {
         <form class="form my-1" onSubmit={(e) => {
             e.preventDefault()
             dispatch(addPost({text}))
-            setText('')
+            //setText('')
         }}>
           <textarea
             name="text"

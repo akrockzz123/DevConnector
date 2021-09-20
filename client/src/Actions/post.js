@@ -1,6 +1,9 @@
 import axios from "axios";
 
+import setAuthToken from "../utils/setAuthToken";
+
 import { SetAlert } from "./alertAction";
+
 import {
    GET_POSTS,
    POST_ERROR,
@@ -58,13 +61,13 @@ export const addPost = (formData) => async dispatch => {
                 'Content-Type' : 'application/json'
             }
         }
-        const res = await axios.post(`/api/posts`,formData,config);
+        const res = await axios.post('/api/posts',formData,config);
 
         dispatch({
             type: ADD_POST,
             payload: res.data
         });
-        dispatch(SetAlert('Post created','success'))
+        dispatch(SetAlert('Post created','success'));
     }catch(err) {
         dispatch({
             type: POST_ERROR,
@@ -123,12 +126,15 @@ export const deletePost = (postId) => async dispatch => {
 export const addComment = (postId,formData) => async dispatch => {
     try {
 
+        //const formData = JSON.stringify(formData)
+        setAuthToken(localStorage.getItem('token'))
         const config = {
             headers: {
                 'Content-Type' : 'application/json'
             }
         }
 
+        
         const res = await axios.post(`/api/posts/comment/${postId}`,formData,config);
 
         dispatch({
