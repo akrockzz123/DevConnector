@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "server": "nodemon index"
+    "server": "nodemon index",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
     "me"
@@ -21,5 +23,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.7",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "concurrently":"^6.2.1"
   }
 }

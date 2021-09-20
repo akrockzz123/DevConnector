@@ -12,6 +12,8 @@ const profile = require('../../models/Profile')
 
 const request = require('request')
 
+const Post = require('../../models/Post')
+
 const User = require('../../models/User')
 // @route GET api/profile/me
 // @desc get current user
@@ -19,8 +21,10 @@ const User = require('../../models/User')
 router.get('/me', auth, async (req,res) =>{
 
     try {
-        const profile = await Profile.findOne({ user: req.user.id}).populate('user', ['name','avatar'])
+        console.log(req.user.id)
+        const profile = await Profile.findOne({ user: req.user.id}).populate('users',['name','avatar'])
 
+        console.log(profile)
         if(!profile)
         {
             res.status(400).json({msg: "There is no matching profile for this user"})
@@ -38,13 +42,19 @@ router.get('/me', auth, async (req,res) =>{
 // @route POST api/profile
 // @desc create or update user profile
 // @access Private
-router.post('/',[auth, [check('status','status is required').not().isEmpty(),
-], check('skills','skills are required').not().isEmpty()], auth, async (req,res) =>{
+router.post(
+'/',
+auth, 
+async (req,res) => {
 
     const errors = validationResult(req)
 
+    console.log(req.body)
+    //console.log(status)
+    console.log("backend")
     if(!errors.isEmpty())
     {
+        console.log("errors")
         return res.status(400).json({errors: errors.array()})
     }
     
@@ -181,6 +191,7 @@ router.delete('/', auth,async (req,res) => {
 
         // remove user posts and profile
 
+        await Post.deleteMany({user: req.user_id})
         await Profile.findOneAndRemove({user: req.user_id})
 
         await User.findOneAndRemove({_id: req.user.id})
@@ -201,17 +212,11 @@ router.delete('/', auth,async (req,res) => {
 // @desc add educaton
 // @access Private
 
-router.post('/education',[auth,[
-    
-    check('school','scool required').not().isEmpty(),
-    check('degree','degree required').not().isEmpty(),
-    check('study','study required').not().isEmpty(),
-    check('from','from date is required').not().isEmpty()
-]],async (req,res) => {
+router.put('/education',auth,async (req,res) => {
 
     
         // remove user posts and profile
-
+        console.log("backend")
         const errors = validationResult(req)
 
         if(!errors.isEmpty()) {

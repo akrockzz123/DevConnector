@@ -24,7 +24,7 @@ router.get('/', auths,async (req,res) => {
 
         const user = await User.findById(req.user.id).select('-password')
 
-        res.send(user)
+        res.json(user)
 
     } catch(err) {
 
@@ -74,7 +74,7 @@ check('password','Please enter password with 6 lengths').isLength({ min: 6})],as
               if(err)
               throw err
 
-
+              console.log(token)
               res.json({ token })
 
            // console.log(token)
