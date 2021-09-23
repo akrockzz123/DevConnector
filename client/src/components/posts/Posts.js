@@ -22,12 +22,14 @@ import PostItem from './PostItem'
 import PostForm from './PostForm'
 
 import { Row,Col} from 'react-bootstrap'
-const Posts = () => {
+const Posts = ({match}) => {
     const dispatch = useDispatch()
+
+    const keyword = match.params.keyword
 
     const {posts} = useSelector(state => state.postReducer)
     useEffect(() => {
-        dispatch(getPosts())
+        dispatch(getPosts(keyword))
     }, [getPosts]);
 
 

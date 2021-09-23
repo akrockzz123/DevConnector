@@ -15,10 +15,10 @@ import {
    REMOVE_COMMENT
 } from '../constants/types';
 
-export const getPosts = () => async dispatch => {
+export const getPosts = (keyword='') => async dispatch => {
     try {
 
-      const res = await axios.get('/api/posts')
+      const res = await axios.get(`/api/posts?keyword=${keyword}`)
 
         dispatch({
             type: GET_POSTS,

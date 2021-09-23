@@ -18,6 +18,7 @@ const User = require('../../models/User')
 // @route GET api/profile/me
 // @desc get current user
 // @access Private
+
 router.get('/me', auth, async (req,res) =>{
 
     try {
@@ -143,17 +144,8 @@ async (req,res) => {
 router.get('/', async (req,res) => {
 
     try{
-        const keyword = req.params.keyword ? {
-
-    
-            name: {
-              $regex: req.query.keyword,
-              $options: 'i',
-            },
-          } : {}
-
-          console.log(keyword)
-        const profiles = await Profile.find({...keyword}).populate('User' , ['name', 'avatar'])
+        
+        const profiles = await Profile.find({ }).populate('User' , ['name', 'avatar'])
 
         res.send(profiles)
     } catch(err) {

@@ -19,6 +19,7 @@ import { GetUser } from '../../Actions/auth'
 import SearchBox from '../SearchBox'
 
 import { Route } from 'react-router'
+
 const Navbar = ({history}) => {
 
     const dispatch = useDispatch()

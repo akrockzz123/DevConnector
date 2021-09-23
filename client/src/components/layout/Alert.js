@@ -8,7 +8,9 @@ import { afterWrite } from '@popperjs/core';
 
 import { useEffect,useState } from 'react';
 
-const Alert = () => {
+import { Alert } from 'react-bootstrap';
+
+const Alerts = () => {
 
     const [messg, setMessg] = useState(Array);
     const alertData = useSelector(state => state.alert);
@@ -23,10 +25,10 @@ const Alert = () => {
 
 return (
     <div>
-        { messg.map((mess) => (
-                (<div className={`alert alert-${mess.alertType}}`}>
-                    <div style={{textAlign: 'center'}}>  {mess.msg}</div>
-                </div>
+        { messg.map((mess,idx) => (
+                (<Alert key={idx} variant={mess.alertType}>
+                    {mess.msg}             
+                </Alert>
             )))                         
     }
     </div>
@@ -34,4 +36,4 @@ return (
 
 }
 
-export default Alert;
+export default Alerts;

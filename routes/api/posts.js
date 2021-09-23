@@ -52,7 +52,18 @@ router.get('/',auth, async (req,res) => {
       
 
         
-        const posts = await Post.find({ }).sort({ date: -1})
+          console.log(req.query.keyword)
+          if(req.query.keyword === "")
+          {
+              posts = await Post.find({ }).sort({ date: -1})
+          }
+          else
+          {
+            posts = await Post.find({'name' : req.query.keyword}).sort({ date: -1})
+          }
+        //const posts = req.params.keyword !== "" ? await Post.find({'name' : req.params.keyword}).sort({ date: -1}) :  await Post.find({ }).sort({ date: -1})
+       // const posts = 
+       
         res.json(posts)
     }catch(err) {
         console.log(err.message)

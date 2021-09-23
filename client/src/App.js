@@ -68,7 +68,7 @@ if(localStorage.token)
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/profiles" component={Profiles} />
                 <Route exact path="/profile/:id" component={Profile} />
-                <Route exact path="/search/:keyword" component={Profiles} />
+                <Route exact path="/search/:keyword" component={Posts} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute exact path="/create-profile" component={CreateProfile} />
                 <PrivateRoute exact path="/edit-profile" component={EditProfile} />

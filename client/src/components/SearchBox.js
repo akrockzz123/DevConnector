@@ -12,7 +12,7 @@ export const SearchBox = ({ history }) => {
             history.push(`/search/${keyword}`)
         }
         else {
-            <Redirect to ='/profiles'/>
+            history.push(('/posts'))
         }
     }
     const [keyword, setKeyword] = useState('')
@@ -29,7 +29,7 @@ export const SearchBox = ({ history }) => {
                 variant ='outline-success'
                 className ='p-2'
                 >
-                Search Profiles</Button>
+                Search Posts by user name</Button>
             </Form>
         </div>
     )

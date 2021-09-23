@@ -225,11 +225,11 @@ export const deleteAccount = () => async dispatch => {
 
 //Get all Profiles
 
-export const getProfiles = (keyword = '') => async dispatch => {
+export const getProfiles = () => async dispatch => {
 
         try {
            
-            const res = await axios.get(`/api/profile?keyword=${keyword}`);
+            const res = await axios.get(`/api/profile`);
     
             dispatch({
                 type: 'GET_PROFILES',
@@ -238,7 +238,7 @@ export const getProfiles = (keyword = '') => async dispatch => {
         } catch (err) {
             dispatch({
                 type: PROFILE_ERROR,
-                payload: {msg: err.response,status:err.response.status}
+                payload: {msg: err.response,status:err.response}
             })
         }
 
@@ -259,7 +259,7 @@ export const getProfileById = (userId) => async dispatch => {
     } catch (err) {
         dispatch({
             type: PROFILE_ERROR,
-            payload: {msg: err.response,status:err.response.status}
+            payload: {msg: err.response,status:err.response}
         })
     }
 

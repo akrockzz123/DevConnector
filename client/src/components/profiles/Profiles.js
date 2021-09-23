@@ -22,7 +22,7 @@ export const Profiles = ({match}) => {
 
     const dispatch = useDispatch();
 
-    const keyword = match.params.keyword
+  
 
     const profileData = useSelector(state => state.profile)
 
@@ -30,10 +30,9 @@ export const Profiles = ({match}) => {
 
     //const [data,setData] = useState('')
 
-    console.log(keyword)
     useEffect(() => {
        
-        dispatch(getProfiles(keyword))
+        dispatch(getProfiles())
 
         //setData(profiles)
         //dispatch({type: 'CLEAR_PROFILE'})
