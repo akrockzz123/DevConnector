@@ -1,10 +1,14 @@
 import React, { Fragment } from 'react'
 
+import { useSelector } from 'react-redux'
 export const ProfileAbout = ({profile: {
     bio,
-    skills,
-    user: { name }
+    skills
 }}) => {
+
+    const {user} = useSelector(state => state.loginAuth)
+
+    const name = user.name
     return (
         <div>
         <div class="profile-about bg-light p-2">
