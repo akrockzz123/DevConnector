@@ -143,8 +143,17 @@ async (req,res) => {
 router.get('/', async (req,res) => {
 
     try{
+        const keyword = req.params.keyword ? {
 
-        const profiles = await Profile.find({}).populate('User' , ['name', 'avatar'])
+    
+            name: {
+              $regex: req.query.keyword,
+              $options: 'i',
+            },
+          } : {}
+
+          console.log(keyword)
+        const profiles = await Profile.find({...keyword}).populate('User' , ['name', 'avatar'])
 
         res.send(profiles)
     } catch(err) {

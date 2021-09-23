@@ -47,29 +47,28 @@ const Dashboard = props => {
         dispatch(deleteAccount())
     }
     return  localStorage.getItem('token') === null ?  (<Redirect to = '/login'/>) : (
-        <Fragment>
+        <div className="container p-1">
             <hr></hr>
             <hr></hr>
             <hr></hr>
             <h1 className="large text-primary">Dashboard</h1>
-            <p className="lead">
+            <p className="lead my-2">
                 <i className="fas fa-user"></i>Welcome {userinfo.user !== null && userinfo.user.name}
             </p>
             {profiledata.profile !== null && userinfo.isAuthenticated  ? (
-                <Fragment>
-                    <DashboardAction/>
-                    <hr></hr>
-                    
+                <div>
+                    <DashboardAction className="m-1" style={{"padding": '3px'}}/>
                     <button className="btn btn-danger"  style = {{margin: 'auto'}} onClick = { DeleteAccount}> <i className="fas fa-user-minus"></i>Delete Account</button>
-                </Fragment>
+                </div>
             ): !userinfo.isAuthenticated ? (<Redirect to = '/login'/>) : (
-                <Fragment>
+                <div></div>,
+                <div classnme="p-1">
                     <p>You have not set up the profile</p>
                     <Link to='/create-profile' className="btn btn-primary my-1">Create profile</Link>
-                </Fragment>
+                </div>
             )}
              
-        </Fragment>
+        </div>
     )
 }
 

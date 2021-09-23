@@ -225,10 +225,11 @@ export const deleteAccount = () => async dispatch => {
 
 //Get all Profiles
 
-export const getProfiles = () => async dispatch => {
+export const getProfiles = (keyword = '') => async dispatch => {
 
         try {
-            const res = await axios.get('/api/profile');
+           
+            const res = await axios.get(`/api/profile?keyword=${keyword}`);
     
             dispatch({
                 type: 'GET_PROFILES',

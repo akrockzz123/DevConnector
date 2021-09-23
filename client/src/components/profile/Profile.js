@@ -42,7 +42,7 @@ const Profile = ({match}) => {
     return (
         <Fragment>
            {profile !== null &&
-           <Fragment>
+           <div className="container">
                <hr></hr>
                <hr></hr>
                <Link style={{marginTop : '100px',marginLeft: '500px'}}to='/profiles' className="btn btn-primary">Back to profiles</Link>
@@ -73,7 +73,7 @@ const Profile = ({match}) => {
                   </div>
                   )
                       : (<div>You have not created the profile</div>)}
-            </Fragment>
+            </div>
             }
         </Fragment>
     )

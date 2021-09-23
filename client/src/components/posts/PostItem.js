@@ -16,7 +16,6 @@ import { addLikes,removeLikes } from '../../Actions/post'
 
 import { deletePost } from '../../Actions/post'
 
-
 import { post } from 'request'
  const PostItem = ({post,showActions}) => {
 
@@ -53,6 +52,7 @@ import { post } from 'request'
                   </div>
                   <div>
                     <p class="my-1">
+                    
                       {text}
                     </p>
                     <p class="post-date">

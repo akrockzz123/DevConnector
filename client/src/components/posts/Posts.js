@@ -17,12 +17,12 @@ import { addPost, getPosts } from '../../Actions/post'
 
 import setAuthToken from "../../utils/setAuthToken";
 
-
 import PostItem from './PostItem'
 
 import PostForm from './PostForm'
-const Posts = () => {
 
+import { Row,Col} from 'react-bootstrap'
+const Posts = () => {
     const dispatch = useDispatch()
 
     const {posts} = useSelector(state => state.postReducer)
@@ -32,18 +32,34 @@ const Posts = () => {
 
 
     return (
-        <div className="post">
-              <h1 className='large text-primary'>POsts</h1>
-              <p>
+        <>
+        <div className="container">
+        <h1 className='large text-primary'>POSTS</h1>
+              
+              
+              <div style={{marginBottom: "10px"}}>
                 <i className="fas fa-user"></i>Welcome to the community
-              </p>
-              <PostForm/>
-              <div className="post">
-                  {posts.map((post) => (
-                      <PostItem key={post._id} post={post} />
-                  ))}
               </div>
+            
+              <div> <PostForm/></div>
+             
+             <div>
+             <Row>
+                 
+                
+                 {posts.map((post) => (
+                         <Col sm={12} md={6} lg={4} xl={3} >
+                             <PostItem key={post._id} post={post} />
+                         </Col>
+                         
+                     ))}
+               </Row>
+             </div>
         </div>
+            
+              
+              
+        </>
     )
 }
 

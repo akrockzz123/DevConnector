@@ -19,6 +19,8 @@ import PostItem from '../posts/PostItem'
 
 import CommentItem from './CommentItem'
 
+
+import CommentForm from './CommentForm'
  const Post = ({match}) => {
 
     const dispatch = useDispatch()
@@ -27,17 +29,22 @@ import CommentItem from './CommentItem'
 
     useEffect(() => {
         dispatch(getPost(match.params.id))
-    },[getPost])
+    },[getPost]);
+    
     return (
         <div className="container">
             {post !== null && (
-                
-                <PostItem post ={post} showActions='false'/>,
-                <div className="comments">
-                     {post.comments.map(comment => (
-                    <CommentItem key ={comment._id} postId = {post._id} comment = {comment}/>
-                ))}
+                <div>
+                    <div><CommentForm postId = {match.params.id}/></div>,
+                    <div><PostItem post ={post} showActions='false'/></div>,
+                    <div>
+
+                        { post !== null && post.comments.length > 0 ? post.comments.map(comment => (
+                        <CommentItem key ={comment._id} postId = {post._id} comment = {comment}/>
+                    )) : null}
+                    </div>
                 </div>
+                
                
             )}
         </div>

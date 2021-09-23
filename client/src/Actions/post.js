@@ -18,7 +18,7 @@ import {
 export const getPosts = () => async dispatch => {
     try {
 
-        const res = await axios.get('/api/posts');
+      const res = await axios.get('/api/posts')
 
         dispatch({
             type: GET_POSTS,
@@ -67,7 +67,9 @@ export const addPost = (formData) => async dispatch => {
             type: ADD_POST,
             payload: res.data
         });
+        dispatch(getPosts())
         dispatch(SetAlert('Post created','success'));
+
     }catch(err) {
         dispatch({
             type: POST_ERROR,
@@ -109,8 +111,9 @@ export const deletePost = (postId) => async dispatch => {
             payload: {postId}
         });
        
-        dispatch(SetAlert('Post removed','success'))
         dispatch(getPosts())
+        dispatch(SetAlert('Post removed','success'))
+      
     }catch(err) {
         dispatch({
             type: POST_ERROR,
@@ -143,7 +146,7 @@ export const addComment = (postId,formData) => async dispatch => {
         });
         
         dispatch(SetAlert('Comment Addded','success'))
-        //dispatch(getPosts())
+        dispatch(getPost(postId))
     }catch(err) {
         dispatch({
             type: POST_ERROR,
@@ -170,7 +173,7 @@ export const deleteComment = (id,comment_id) => async dispatch => {
         });
         
         dispatch(SetAlert('Comment Addded','success'))
-        //dispatch(getPosts())
+        dispatch(getPost(id))
     }catch(err) {
         dispatch({
             type: POST_ERROR,

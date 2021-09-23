@@ -16,7 +16,10 @@ import { useEffect } from 'react'
 
 import { GetUser } from '../../Actions/auth'
 
-const Navbar = () => {
+import SearchBox from '../SearchBox'
+
+import { Route } from 'react-router'
+const Navbar = ({history}) => {
 
     const dispatch = useDispatch()
 
@@ -40,9 +43,10 @@ const Navbar = () => {
     const authLinks = (
         <ul>
             <li>
-                <Link to ='/profiles'>
-                    Developers
-                </Link>
+            <Route render = {({ history }) => <SearchBox history = { history }/>} />
+            </li>
+            <li>
+                <Link to="/profiles">Profile</Link>
             </li>
             <li>
                 <Link to="/posts">Posts</Link>
@@ -57,9 +61,10 @@ const Navbar = () => {
     const guestLinks = (
         <ul>
             <li>
-                <Link to ='/profiles'>
-                    Developers
-                </Link>
+            <Route render = {({ history }) => <SearchBox history = { history }/>} />
+            </li>
+            <li>
+                <Link to="/profiles">Profile</Link>
             </li>
             <li>
                 <Link to="/register">Register</Link>

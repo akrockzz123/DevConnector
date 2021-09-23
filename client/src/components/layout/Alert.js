@@ -21,22 +21,17 @@ const Alert = () => {
     }
 }, [alertData])
 
-
 return (
     <div>
         { messg.map((mess) => (
                 (<div className={`alert alert-${mess.alertType}}`}>
-                  {mess.msg}
+                    <div style={{textAlign: 'center'}}>  {mess.msg}</div>
                 </div>
-            )))
+            )))                         
     }
     </div>
 );
-    
-    
-   
-            
-}
 
+}
 
 export default Alert;

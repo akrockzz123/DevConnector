@@ -18,9 +18,11 @@ import ProfileItem from './ProfileItem'
 import setAuthToken from "../../utils/setAuthToken";
 
 import { getPost } from '../../Actions/post'
-export const Profiles = () => {
+export const Profiles = ({match}) => {
 
     const dispatch = useDispatch();
+
+    const keyword = match.params.keyword
 
     const profileData = useSelector(state => state.profile)
 
@@ -28,8 +30,11 @@ export const Profiles = () => {
 
     //const [data,setData] = useState('')
 
+    console.log(keyword)
     useEffect(() => {
-        dispatch(getProfiles())
+       
+        dispatch(getProfiles(keyword))
+
         //setData(profiles)
         //dispatch({type: 'CLEAR_PROFILE'})
     },[getProfiles]);
@@ -39,8 +44,7 @@ export const Profiles = () => {
     return (
         <Fragment>
             { !loading &&
-            (<div>
-                <h1>hiiiii</h1>
+            (<div className="container">
                 <h1 className='large text-primary'>Developers</h1>
                 <p className='lead'>
                     <i className='fab fa-connect'></i>
