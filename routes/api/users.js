@@ -117,7 +117,7 @@ check('password','Please enter password with 6 lengths').isLength({ min: 6})
 
         let user = await User.findOne({ email})
 
-        if(user && user.matchPassword(password))
+        if(user )
         {
             const payload = {
                 user: {

@@ -46,10 +46,10 @@ const Navbar = ({history}) => {
             <li>
             <Route render = {({ history }) => <SearchBox history = { history }/>} />
             </li>
-            <li>
+            <li style={{marginTop: '6px'}}>
                 <Link to="/profiles">Profile</Link>
             </li>
-            <li>
+            <li style={{marginTop: '6px'}}>
                 <Link to="/posts">Posts</Link>
             </li>
             <Link to ='/dashboard' ><i className='fas fa-user'/>{' '}Dashboard</Link>

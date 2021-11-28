@@ -566,7 +566,24 @@
       width: 100%;
       margin-bottom: 0.2rem;
     }
-  
+
+    .item-enter {
+      opacity: 0;
+    }
+
+    .item-enter-active {
+      opacity: 1;
+      transition: opacity 1000ms ease-in;
+    }
+
+    .item-exit {
+      opacity: 1;
+    }
+
+    .item-exit-active {
+      opacity: 0;
+      transition: opacity 1000ms ease-in;
+    }
     .post {
       grid-template-columns: 1fr;
     }

@@ -64,7 +64,7 @@ export const CreateProfile = ({history}) => {
 
     const onChange= e => setFormData({...formData,[e.target.name]:e.target.value})
     return (
-        <div>
+        <div className="container">
             <h1 className="large text-primary">
         Create Your Profile
       </h1>

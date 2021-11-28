@@ -32,6 +32,7 @@ router.post('/',auth, async (req,res) => {
 
         })
 
+        console.log(newPost)
         const post = await newPost.save()
 
         res.json(post)

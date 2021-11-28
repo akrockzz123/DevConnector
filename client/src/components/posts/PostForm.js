@@ -26,6 +26,7 @@ const PostForm = () => {
           <h3>Leave A Comment</h3>
         </div>
         <form class="form my-1" onSubmit={(e) => {
+            
             e.preventDefault()
             dispatch(addPost(text))
             setText('')

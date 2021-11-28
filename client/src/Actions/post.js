@@ -54,6 +54,8 @@ export const addLikes = (postId) => async dispatch => {
 
 
 export const addPost = (formData) => async dispatch => {
+
+    console.log(formData,"nukk")
     try {
 
         const config = {
