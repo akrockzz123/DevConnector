@@ -27,14 +27,19 @@ const Posts = ({match}) => {
 
     const keyword = match.params.keyword
 
+    const [friend,setFriend] = useState(false)
+
     const {posts} = useSelector(state => state.postReducer)
     useEffect(() => {
         dispatch(getPosts(keyword))
     }, [getPosts]);
 
-
+    const showFriend  = () => {
+        setFriend(!friend)
+    }
     return (
         <>
+        <input type="checkbox" onClick = {showFriend} data-toggle="toggle" data-onstyle="outline-info" data-offstyle="outline-light"></input>
         <div className="container">
         <h1 className='large text-primary'>POSTS</h1>
               
@@ -51,7 +56,7 @@ const Posts = ({match}) => {
                 
                  {posts.map((post) => (
                          <Col sm={12} md={6} lg={4} xl={3} >
-                             <PostItem key={post._id} post={post} />
+                             <PostItem key={post._id} post={post} friend = {friend} />
                          </Col>
                          
                      ))}

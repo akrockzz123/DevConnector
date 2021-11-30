@@ -48,4 +48,11 @@ export const ADD_COMMENT = 'ADD_COMMENT'
 
 export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 
+export const REMOVE_FRIEND = 'REMOVE_FRIEND'
+
+export const ADD_FRIEND = 'ADD_FRIEND'
+
+export const SHOW_FRIEND = 'SHOW_FRIEND'
+
+
 

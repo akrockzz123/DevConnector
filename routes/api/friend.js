@@ -49,7 +49,7 @@ router.delete('/:id',auths,async (req,res) => {
 
         await user.save()
 
-        res.json(user)
+        res.json(user.friends)
 
 
     }catch(err) {
@@ -91,13 +91,27 @@ router.post('/:id',auths, async (req,res) => {
 
        // console.log(typeof(req.user.id),req.user.id)
 
-        res.json(user)
+        res.json(user.friends)
 
     }catch(err) {
         console.log(err.message)
         res.status(500).send("server error")
     }
 });
+
+router.get('/',auths,async (req,res) => {
+
+    try {
+        
+        const user = await User.findById(req.user.id).select('-password')
+
+        res.json(user.friends)
+    } catch (error) {
+        console.log(err.message)
+        res.status(500).send("server error")
+    }
+})
+
 
 
 module.exports = router ;

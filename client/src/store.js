@@ -10,6 +10,8 @@ import { UserAuthReducer } from "./Reducers/authReducer";
 
 import { UserInfoReducer } from "./Reducers/UserInfoReducer";
 
+import { Friend } from "./Reducers/friendReducer"
+
 import {Profile} from './Reducers/Profile'
 
 import {Posts} from './Reducers/post'
@@ -18,7 +20,7 @@ const initialState = [];
 
 const middleware = [thunk];
 
-const reducer = combineReducers({alert: alertReducer,loginAuth: UserAuthReducer,userInfo: UserInfoReducer,profile: Profile,postReducer: Posts})
+const reducer = combineReducers({alert: alertReducer,loginAuth: UserAuthReducer,userInfo: UserInfoReducer,profile: Profile,postReducer: Posts,Friends: Friend})
 const store = createStore(reducer,initialState,composeWithDevTools(applyMiddleware(...middleware)));
 
 

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
+    "bootstrap4-toggle": "^3.6.1",
     "cra-template": "1.1.2",
     "moment": "^2.29.1",
     "react": "^17.0.2",
