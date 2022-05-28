@@ -10,7 +10,7 @@ import {
     USER_LOGIN_FAIL,
     LOGOUT,
     CLEAR_PROFILE
-} from '../constants/types';
+} from '../constants/types'
 
 import setAuthToken from "../utils/setAuthToken";
 
