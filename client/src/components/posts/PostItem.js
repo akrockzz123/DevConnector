@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 
 import Moment from 'react-moment'
 
@@ -17,6 +17,7 @@ import { addLikes,removeLikes } from '../../Actions/post'
 import { deletePost } from '../../Actions/post'
 
 import { post } from 'request'
+import { myFriend } from '../../Actions/allFriend'
  const PostItem = ({post,showActions}) => {
 
   console.log(showActions)
@@ -33,6 +34,12 @@ import { post } from 'request'
     
    }
     const dispatch = useDispatch()
+
+    useEffect(() => {
+
+      dispatch(myFriend())
+
+    },[myFriend])
 
     return (
       <Fragment>

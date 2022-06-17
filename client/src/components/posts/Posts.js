@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
 import { useState } from 'react'
@@ -22,6 +21,9 @@ import PostItem from './PostItem'
 import PostForm from './PostForm'
 
 import { Row,Col} from 'react-bootstrap'
+
+import { useSelector } from 'react-redux'
+
 const Posts = ({match}) => {
     const dispatch = useDispatch()
 
@@ -29,7 +31,11 @@ const Posts = ({match}) => {
 
     const [friend,setFriend] = useState(false)
 
+    const [showPostsOfFriend,setShowPostsOfFriend] = useState(false)
+
     const {posts} = useSelector(state => state.postReducer)
+
+    console.log(showPostsOfFriend)
     useEffect(() => {
         dispatch(getPosts(keyword))
     }, [getPosts]);
@@ -37,6 +43,57 @@ const Posts = ({match}) => {
     const showFriend  = () => {
         setFriend(!friend)
     }
+
+    const {loaing,allfriend,error} = useSelector(state => state.Friends)
+
+    const toggleFriendhandler = () => {
+
+        setShowPostsOfFriend(!showPostsOfFriend)
+    }
+
+    const link1 = 
+        ( posts.map((post) => {
+
+            return (
+                <Col sm={12} md={6} lg={4} xl={3} >
+                <PostItem key={post._id} post={post} friend = {friend} showPostsOfFriend = {showPostsOfFriend} />
+            </Col>
+            );
+            
+            
+            }));
+
+
+            
+    
+   const link2 = ( posts.map((post) => {
+
+    var found = 0;
+
+    allfriend.map(f => {
+               
+        if(f.user === post.user)
+        {
+            found =1;
+
+            //break;
+        }
+    })
+    
+
+    if(found == 1)
+    {
+        return (
+            <Col sm={12} md={6} lg={4} xl={3} >
+            <PostItem key={post._id} post={post} friend = {friend} />
+        </Col>
+        );
+    }
+    
+    
+    
+    }));
+
     return (
         <>
         <input type="checkbox" onClick = {showFriend} data-toggle="toggle" data-onstyle="outline-info" data-offstyle="outline-light"></input>
@@ -52,14 +109,11 @@ const Posts = ({match}) => {
              
              <div>
              <Row>
-                 
+                  
+                <button style = {{ padding: '3px' , margin: '2px'}} onClick = {toggleFriendhandler}>{showPostsOfFriend == false ? 
+                (<div>click to Show posts of only friend</div>) : (<div>click to Show all posts</div>)}</button>
                 
-                 {posts.map((post) => (
-                         <Col sm={12} md={6} lg={4} xl={3} >
-                             <PostItem key={post._id} post={post} friend = {friend} />
-                         </Col>
-                         
-                     ))}
+                {showPostsOfFriend ? (link2) : (link1)},
                </Row>
              </div>
         </div>
