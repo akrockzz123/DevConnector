@@ -17,13 +17,15 @@ const auth = require('../../middleware/authMiddleware')
 // @desc Tset route
 // @access Private
 router.post('/',auth, async (req,res) => {
-    const errors = validationResult(req)
+    //const errors = validationResult(req)
 
-   
+    console.log("just checking",req.body.text)
+
     try{
 
         const user = await User.findById(req.user.id).select('-password')
 
+       
         const newPost  = new Post({
             text: req.body.text,
             name: user.name,

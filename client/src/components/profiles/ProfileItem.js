@@ -9,7 +9,7 @@ import { Fragment } from 'react'
 
 import {getProfiles} from '../../Actions/profile'
 
-import { addFriend } from '../../Actions/allFriend'
+import { addFriend, deleteFriend } from '../../Actions/allFriend'
 
 import {Link,withRouter} from 'react-router-dom'
 
@@ -29,10 +29,24 @@ import { GetUser } from '../../Actions/auth'
     console.log(props.data,"shoe")
     const prof = props.data
     const show = props.show
+
+    var friendid = null;
+
+    if(show == true)
+    {
+        friendid = props.userFriendId
+    }
+
     const add = () => {
         dispatch(addFriend(prof.user))
         
     }
+
+    const removeFriend = () => {
+        
+        dispatch(deleteFriend(friendid))
+    }
+
     return (
         <div className="profile bg-light">
             
@@ -43,7 +57,7 @@ import { GetUser } from '../../Actions/auth'
                 <Link to ={`/profile/${prof.user}`} className="btn btn-primary">
                     View profile
                 </Link>
-                {show === false ? <Button onClick={add} style={{position: 'absolute',marginLeft: '700px'}}>Add Friend</Button> : <iv></iv>}
+                {show == false ? <Button onClick={add} style={{position: 'absolute',marginLeft: '700px'}}>Add Friend</Button> : <Button  variant = 'danger' onClick = {removeFriend} style={{position: 'absolute',marginLeft: '700px'}}>Remove Friend</Button>}
             </div>
             <ul>
                 {prof.skills.slice(0,4).map((skill,index) => (

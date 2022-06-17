@@ -1,5 +1,5 @@
 {
-    "mongoURI": "mongodb://aniket124:aniket123@cluster0-shard-00-00.6mc7k.mongodb.net:27017,cluster0-shard-00-01.6mc7k.mongodb.net:27017,cluster0-shard-00-02.6mc7k.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-lftdc6-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "mongoURI": "mongodb://aniket123456:aniket123456@cluster0-shard-00-00.ya5fh.mongodb.net:27017,cluster0-shard-00-01.ya5fh.mongodb.net:27017,cluster0-shard-00-02.ya5fh.mongodb.net:27017/?ssl=true&replicaSet=atlas-rqumbh-shard-0&authSource=admin&retryWrites=true&w=majority",
     "jwtSecret": "1356",
     "githubClientId": "8e7028b4547837726e7e",
     "githubSecret": "2a0f57f406043be9ec77381f2294c5c3dce40475"

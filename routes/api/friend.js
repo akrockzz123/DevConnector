@@ -33,7 +33,7 @@ router.delete('/:id',auths,async (req,res) => {
         const user = await User.findById(req.user.id).select('-password')
 
      console.log(user)
-        //check if the post is already liked by user
+        //check if the friend is already removed by user
 
         if(user.friends.filter(like => like.user.toString() == req.params.id).length === 0)
         {

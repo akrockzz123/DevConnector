@@ -71,17 +71,21 @@ export const Profiles = ({match}) => {
             
             var shows = show
             console.log(typeof(prof.user),"hey2")
+
+            var idfriend = null;
+
             allfriend.map(f => {
                
                 if(f.user === prof.user)
                 {
                     found =1;
+
                     //break;
                 }
             })
             if(found)
             {
-                return  <div><ProfileItem id={index} data = {prof} show = {show}/></div>
+                return  <div><ProfileItem id={index} data = {prof} show = {true} userFriendId = {prof.user}/></div>
                 
                
             }
@@ -113,6 +117,7 @@ export const Profiles = ({match}) => {
                 
                
             }
+           
             
         
                 
@@ -133,7 +138,7 @@ export const Profiles = ({match}) => {
                     <i className='fab fa-connect'></i>
                 </p>
                 
-                 <button onClick={showFriend}>Show</button>
+                 <button onClick={showFriend} style = {{marginBottom : '10px', padding: '3px'}}>{show == false ? (<div> click me to show friends</div>) : ( <div>click me to show Non friends</div>)}</button>
                  
                  {show === true ? link1 : link2}
                 

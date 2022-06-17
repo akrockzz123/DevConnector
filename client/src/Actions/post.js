@@ -63,7 +63,7 @@ export const addPost = (formData) => async dispatch => {
                 'Content-Type' : 'application/json'
             }
         }
-        const res = await axios.post('/api/posts',formData,config);
+        const res = await axios.post('/api/posts',{text : formData },config);
 
         dispatch({
             type: ADD_POST,
